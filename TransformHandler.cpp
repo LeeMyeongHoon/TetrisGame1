@@ -9,10 +9,7 @@ TetrisApp::TransformHandler::TransformHandler(TetrisApp& app)
 
 TetrisApp::TransformHandler::~TransformHandler()
 {
-	if (oldShape != nullptr)
-	{
-		delete oldShape;
-	}
+	delete oldShape;
 }
 
 void TetrisApp::TransformHandler::Do()

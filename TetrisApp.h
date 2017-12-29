@@ -2,6 +2,10 @@
 #include "Stack.h"
 
 class Shape;
+namespace std
+{
+	class mutex;
+}
 
 class TetrisApp final
 {
@@ -29,11 +33,12 @@ private:
 		RIGHT_OVER, LEFT_OVER, CANNOT_TRANSFORM, CAN_TRANFORM
 	};
 
-	class TransformHandler
+	class TransformHandler final
 	{
 	public:
 		TransformHandler() = delete;
 		TransformHandler(TetrisApp& app);
+		TransformHandler(const TransformHandler& other) = delete; // shallow_copy ¹æÁö
 		~TransformHandler();
 
 		void Do();
@@ -76,6 +81,8 @@ private:
 	Stack* stack;
 	Shape* shape;
 	Shape* expectedShape;
+	std::mutex* mtx;
+
 
 	void HandleTransformShape();
 	void HandleInputKey();

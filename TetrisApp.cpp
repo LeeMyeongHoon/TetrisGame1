@@ -11,22 +11,12 @@
 #include "Shape.h"
 #include "GoToXY.h"
 
-static std::mutex mtx;
-
 TetrisApp::~TetrisApp()
 {
-	if (expectedShape != nullptr)
-	{
-		delete expectedShape;
-	}
-	if (shape != nullptr)
-	{
-		delete shape;
-	}
-	if (stack != nullptr)
-	{
-		delete stack;
-	}
+	delete expectedShape;
+	delete shape;
+	delete stack;
+	delete mtx;
 }
 
 
@@ -45,6 +35,7 @@ void TetrisApp::Run()
 			stack = new Stack;
 			shape = new Shape;
 			expectedShape = new Shape;
+			mtx = new std::mutex;
 
 			isGameOver = false;
 
@@ -61,9 +52,9 @@ void TetrisApp::Run()
 			while (isGameOver == false)
 			{
 				std::this_thread::sleep_for(std::chrono::milliseconds(400));
-				mtx.lock();
+				mtx->lock();
 				HandleDownKey();
-				mtx.unlock();
+				mtx->unlock();
 			}
 
 
@@ -74,13 +65,14 @@ void TetrisApp::Run()
 
 			delete stack;
 			stack = nullptr;
+
 			delete shape;
 			shape = nullptr;
+
 			delete expectedShape;
 			expectedShape = nullptr;
 
 			system("PAUSE");
-
 
 			break;
 		}
@@ -146,7 +138,7 @@ void TetrisApp::HandleInputKey()
 	{
 		if (_kbhit())
 		{
-			mtx.lock();
+			mtx->lock();
 
 			switch (GetInputKey())
 			{
@@ -174,7 +166,7 @@ void TetrisApp::HandleInputKey()
 				break;
 			}
 
-			mtx.unlock();
+			mtx->unlock();
 		}
 	}
 }
