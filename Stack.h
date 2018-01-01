@@ -37,5 +37,5 @@ public:
 
 private:
 	int highestBlockY;
-	Data data;
+	Stack::Data data;
 };

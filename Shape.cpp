@@ -7,7 +7,7 @@
 #include "GoToXY.h"
 
 
-const Shape::BlockOffset Shape::blockOffset{};
+const Shape::BlockOffset Shape::BLOCK_OFFSET{};
 
 
 Location2D Shape::GetBlockXY(const int blockNum) const
