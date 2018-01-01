@@ -1,7 +1,6 @@
 #pragma once
 
 #include <array>
-#include <functional>
 
 #include "Location2D.h"
 #include "Side.h"
