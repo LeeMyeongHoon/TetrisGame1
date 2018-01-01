@@ -10,7 +10,7 @@ class Stack final
 public:
 	static const int VALID_HEIGHT = 20;
 	static const int WIDTH = 10;
-	static const int OVER_HEIGHT = VALID_HEIGHT + MAX_BLOCK_UP_OFFSET + 3;
+	static const int OVER_HEIGHT = VALID_HEIGHT + Shape::MAX_BLOCK_UP_OFFSET + 3;
 
 	static void DrawStackBlock();
 

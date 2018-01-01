@@ -5,8 +5,6 @@
 
 #include "Location2D.h"
 
-enum { MAX_BLOCK_DOWN_OFFSET = 1 };
-enum { MAX_BLOCK_UP_OFFSET = 2 };
 
 class Shape final
 {
@@ -16,6 +14,8 @@ public:
 		S, Z, J, L, T, O, l, COUNT
 	};
 
+	static const int MAX_BLOCK_DOWN_OFFSET = 1;
+	static const int MAX_BLOCK_UP_OFFSET = 2;
 	static const int BLOCK_COUNT = 4;
 	static const int FORM_COUNT = 4;
 

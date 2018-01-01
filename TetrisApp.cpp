@@ -225,8 +225,8 @@ void TetrisApp::HandlePushShape()
 	shape->DrawChangedStack();
 
 	//  shape의 블럭부분에서만 breakRow가 발생되므로
-	int maxShapeBlockY = shape->GetLocY() + MAX_BLOCK_UP_OFFSET;
-	int minShapeBlockY = shape->GetLocY() - MAX_BLOCK_DOWN_OFFSET;
+	int maxShapeBlockY = shape->GetLocY() + Shape::MAX_BLOCK_UP_OFFSET;
+	int minShapeBlockY = shape->GetLocY() - Shape::MAX_BLOCK_DOWN_OFFSET;
 	if (minShapeBlockY < 0)
 	{
 		minShapeBlockY = 0;
@@ -337,7 +337,7 @@ TetrisApp::Menu TetrisApp::GetInputMenu()
 
 void TetrisApp::EraseNextShape()
 {
-	for (int y = NEXT_SHAPE_Y - MAX_BLOCK_DOWN_OFFSET; y <= NEXT_SHAPE_Y + MAX_BLOCK_UP_OFFSET; y++)
+	for (int y = NEXT_SHAPE_Y - Shape::MAX_BLOCK_DOWN_OFFSET; y <= NEXT_SHAPE_Y + Shape::MAX_BLOCK_UP_OFFSET; y++)
 	{
 		GoToXY(NEXT_SHAPE_X - 2, y);
 		printf("          ");
