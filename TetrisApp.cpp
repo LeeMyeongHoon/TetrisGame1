@@ -334,7 +334,7 @@ TetrisApp::Menu TetrisApp::GetInputMenu()
 	return menu;
 }
 
-
+//
 void TetrisApp::EraseNextShape()
 {
 	for (int y = NEXT_SHAPE_Y - Shape::MAX_BLOCK_DOWN_OFFSET; y <= NEXT_SHAPE_Y + Shape::MAX_BLOCK_UP_OFFSET; y++)
