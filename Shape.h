@@ -4,7 +4,7 @@
 #include <functional>
 
 #include "Location2D.h"
-
+#include "Side.h"
 
 class Shape final
 {
@@ -22,6 +22,7 @@ public:
 
 private:
 	using Form = int;
+
 
 	struct BlockOffset final
 	{

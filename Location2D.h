@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Side.h"
-
 struct Location2D final
 {
 	int x;
