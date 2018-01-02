@@ -43,7 +43,7 @@ private:
 	static Type MakeRandomType();
 	
 public:
-		
+	Shape();
 	Shape(const Type type, const Form form, const int locX, const int locY);
 	Shape(const Shape& other) = default;
 
