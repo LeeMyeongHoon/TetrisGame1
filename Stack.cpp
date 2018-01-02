@@ -52,7 +52,7 @@ int Stack::FindFullRow(const int beginY, const int lastY) const
 }
 
 
-void Stack::BreakRow(const int brokenRow)
+void Stack::BreakRow(const int keyY)
 {
 	// 1줄씩 아래로 당긴다.
 	for (int x = 0; x < WIDTH; x++)

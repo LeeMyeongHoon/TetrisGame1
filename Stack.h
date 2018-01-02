@@ -22,7 +22,7 @@ public:
 	~Stack() = default;
 
 	void Reset();
-	void BreakRow(const int y);
+	void BreakRow(const int keyY);
 	void Draw(const int beginY) const;
 	void Erase(const int beginY, const int lastY) const;
 	void PushShape(const Shape& shape);
