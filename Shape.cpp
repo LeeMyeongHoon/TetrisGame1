@@ -10,7 +10,7 @@
 const Shape::BlockOffset Shape::BLOCK_OFFSET{};
 
 
-Location2D Shap	e::GetBlockXY(const int blockNum) const
+Location2D Shape::GetBlockXY(const int blockNum) const
 {
 	return Location2D(GetBlockX(blockNum), GetBlockY(blockNum));
 }
