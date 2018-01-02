@@ -17,17 +17,17 @@ Location2D Shape::GetBlockXY(const int blockNum) const
 
 int Shape::GetLowestBlockY() const
 {
-	int lowestBlockY = std::numeric_limits<int>::max();
-	for (int blockNum = 0; blockNum < Shape::BLOCK_COUNT; blockNum++)
-	{
-		int blockY = GetBlockY(blockNum);
-		if (blockY < lowestBlockY)
+		int lowestBlockY = std::numeric_limits<int>::max();
+		for (int blockNum = 0; blockNum < Shape::BLOCK_COUNT; blockNum++)
 		{
-			lowestBlockY = blockY;
+			int blockY = GetBlockY(blockNum);
+			if (blockY < lowestBlockY)
+			{
+				lowestBlockY = blockY;
+			}
 		}
-	}
 
-	return lowestBlockY;
+		return lowestBlockY;
 }
 
 
