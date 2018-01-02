@@ -26,11 +26,11 @@ void TetrisApp::Run()
 	HideCursor();
 
 	Menu menu;
-	while ((menu = GetInputMenu()) != Menu::END)
+	while ((menu = GetInputMenu()) != Menu::End)
 	{
 		switch (menu)
 		{
-		case Menu::GAME_START:
+		case Menu::GameStart:
 		{
 			stack = new Stack;
 			shape = new Shape;
@@ -101,7 +101,7 @@ bool TetrisApp::CanMoveSideShape(Side sideOffset) const
 
 		int nextBlockX = blockX + sideOffset;
 		int nextBlockY = blockY;
-		if (nextBlockX < 0 || nextBlockX >= Stack::WIDTH || stack->GetData(nextBlockX, nextBlockY) == Blank::BLOCK)
+		if (nextBlockX < 0 || nextBlockX >= Stack::WIDTH || stack->GetData(nextBlockX, nextBlockY) == Blank::Block)
 		{
 			return false;
 		}
@@ -123,7 +123,7 @@ bool TetrisApp::CanMoveDownShape(const Shape& shape) const
 
 		int nextBlockX = blockX;
 		int nextBlockY = blockY - 1;
-		if (nextBlockY < 0 || stack->GetData(nextBlockX, nextBlockY) == Blank::BLOCK)
+		if (nextBlockY < 0 || stack->GetData(nextBlockX, nextBlockY) == Blank::Block)
 		{
 			return false;
 		}
@@ -142,23 +142,23 @@ void TetrisApp::HandleInputKey()
 
 			switch (GetInputKey())
 			{
-			case Key::UP:
+			case Key::Up:
 				HandleTransformShape();
 				break;
 
-			case Key::DOWN:
+			case Key::Down:
 				HandleDownKey();
 				break;
 
-			case Key::LEFT:
-				HandleSideKey(Side::LEFT);
+			case Key::Left:
+				HandleSideKey(Side::Left);
 				break;
 
-			case Key::RIGHT:
-				HandleSideKey(Side::RIGHT);
+			case Key::Right:
+				HandleSideKey(Side::Right);
 				break;
 
-			case Key::SPACE:
+			case Key::Space:
 				HandleSpaceKey();
 				break;
 
@@ -302,7 +302,7 @@ void TetrisApp::DrawExpectedShape() const
 TetrisApp::Key TetrisApp::GetInputKey()
 {
 	int inputKey = _getch();
-	if (inputKey == (int)(Key::NOT_CHAR_KEY))
+	if (inputKey == (int)(Key::NotCharKey))
 	{
 		inputKey = _getch();
 	}
@@ -312,11 +312,11 @@ TetrisApp::Key TetrisApp::GetInputKey()
 
 TetrisApp::Menu TetrisApp::GetInputMenu()
 {
-	static const char* MENU_STRINGS[(int)Menu::COUNT] = { "게임 시작","게임 종료" };
+	static const char* MENU_STRINGS[(int)Menu::Count] = { "게임 시작","게임 종료" };
 
 	system("cls");
 	std::cout << "**테트리스 게임**" << '\n';
-	for (int menuNum = 0; menuNum < (int)Menu::COUNT; menuNum++)
+	for (int menuNum = 0; menuNum < (int)Menu::Count; menuNum++)
 	{
 		std::cout << '[' << menuNum << "] " << MENU_STRINGS[menuNum] << "\n";
 	}

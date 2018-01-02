@@ -40,24 +40,24 @@ void TetrisApp::TransformHandler::Do()
 		{
 			shouldMove = true;
 			obstacleX = blockX;
-			moveDirection = Side::RIGHT;
+			moveDirection = Side::Right;
 			break;
 		}
 		else if (blockX >= Stack::WIDTH)
 		{
 			shouldMove = true;
 			obstacleX = blockX;
-			moveDirection = Side::LEFT;
+			moveDirection = Side::Left;
 			break;
 		}
 		else
 		{
 			int blockY = app.shape->GetBlockY(blockNum);
-			if (app.stack->GetData(blockX, blockY) == Blank::BLOCK)
+			if (app.stack->GetData(blockX, blockY) == Blank::Block)
 			{
 				shouldMove = true;
 				obstacleX = blockX;
-				moveDirection = obstacleX < app.shape->GetLocX() ? Side::RIGHT : Side::LEFT;
+				moveDirection = obstacleX < app.shape->GetLocX() ? Side::Right : Side::Left;
 				break;
 			}
 		}
@@ -74,7 +74,7 @@ void TetrisApp::TransformHandler::Do()
 			{
 				auto blockX = app.shape->GetBlockX(blockNum);
 				auto blockY = app.shape->GetBlockY(blockNum);
-				if (blockX < 0 || blockX >= Stack::WIDTH || app.stack->GetData(blockX, blockY) == Blank::BLOCK)
+				if (blockX < 0 || blockX >= Stack::WIDTH || app.stack->GetData(blockX, blockY) == Blank::Block)
 				{
 					canDrawShape = false;
 					break;
@@ -124,7 +124,7 @@ bool TetrisApp::TransformHandler::IsBottomOver() const
 	{
 		int blockX = app.shape->GetBlockX(blockNum);
 		int blockY = app.shape->GetBlockY(blockNum);
-		if (blockY < 0 || (blockX >= 0 && blockX < Stack::WIDTH && app.stack->GetData(blockX, blockY) == Blank::BLOCK && blockY < oldShapeBottom))
+		if (blockY < 0 || (blockX >= 0 && blockX < Stack::WIDTH && app.stack->GetData(blockX, blockY) == Blank::Block && blockY < oldShapeBottom))
 		{
 			return true;
 		}

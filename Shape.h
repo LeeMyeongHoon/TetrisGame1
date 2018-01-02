@@ -10,7 +10,7 @@ class Shape final
 public:
 	enum class Type
 	{
-		S, Z, J, L, T, O, l, COUNT
+		S, Z, J, L, T, O, l, Count
 	};
 
 	static const int MAX_BLOCK_DOWN_OFFSET = 1;
@@ -32,7 +32,7 @@ private:
 		const auto operator[](Form form) const { return data[form]; };
 
 	private:
-		using Data = std::array<std::array<std::array<Location2D, BLOCK_COUNT>, FORM_COUNT>, (int)Type::COUNT>;
+		using Data = std::array<std::array<std::array<Location2D, BLOCK_COUNT>, FORM_COUNT>, (int)Type::Count>;
 
 		Data data;
 	};

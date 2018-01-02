@@ -135,7 +135,7 @@ void Shape::Reset()
 Shape::Type Shape::MakeRandomType()
 {
 #define TEST
-	static const int TypeWeights[(int)Type::COUNT] =
+	static const int TypeWeights[(int)Type::Count] =
 #ifdef TEST
 	{ 1,1,1,1,1,1,INT_MAX };
 #else

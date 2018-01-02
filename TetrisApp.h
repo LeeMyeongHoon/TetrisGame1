@@ -14,23 +14,23 @@ public:
 private:
 	enum class Menu
 	{
-		GAME_START, END, COUNT
+		GameStart, End, Count
 	};
 
 	enum class Key
 	{
-		NOT_CHAR_KEY = 224,
-		ENTER = 13,
-		UP = 72,
-		DOWN = 80,
-		LEFT = 75,
-		RIGHT = 77,
-		SPACE = 32
+		NotCharKey = 224,
+		Enter = 13,
+		Up = 72,
+		Down = 80,
+		Left = 75,
+		Right = 77,
+		Space = 32
 	};
 
-	enum CheckForTransform_ret
+	enum class CheckForTransform_ret
 	{
-		RIGHT_OVER, LEFT_OVER, CANNOT_TRANSFORM, CAN_TRANFORM
+		RightOver, LeftOver, CannotTransform, CanTransform
 	};
 
 	class TransformHandler final

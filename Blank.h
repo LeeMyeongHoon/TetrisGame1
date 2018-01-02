@@ -2,5 +2,5 @@
 
 enum class Blank
 {
-	EMPTY, BLOCK
+	Empty, Block
 };

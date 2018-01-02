@@ -2,7 +2,7 @@
 
 enum class Side
 {
-	RIGHT = +1, LEFT = -1
+	Right = +1, Left = -1
 };
 
 int operator+(int lhs, Side side);

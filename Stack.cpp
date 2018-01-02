@@ -24,7 +24,7 @@ void Stack::Reset()
 	{
 		for (int y = 0; y < OVER_HEIGHT; y++)
 		{
-			data[x][y] = Blank::EMPTY;
+			data[x][y] = Blank::Empty;
 		}
 	}
 
@@ -61,7 +61,7 @@ void Stack::BreakRow(const int brokenRow)
 		{
 			data[x][y] = data[x][y + 1];
 		}
-		data[x][highestBlockY] = Blank::EMPTY;
+		data[x][highestBlockY] = Blank::Empty;
 	}
 	highestBlockY--;
 }
@@ -73,7 +73,7 @@ void Stack::Draw(const int beginY) const
 	{
 		for (int y = beginY; y <= highestBlockY; y++)
 		{
-			if (data[x][y] == Blank::BLOCK)
+			if (data[x][y] == Blank::Block)
 			{
 				GoToXY(x, y);
 				DrawStackBlock();
@@ -103,7 +103,7 @@ void Stack::PushShape(const Shape& shape)
 		auto blockX = shape.GetBlockX(blockNum);
 		auto blockY = shape.GetBlockY(blockNum);
 
-		data[blockX][blockY] = Blank::BLOCK;
+		data[blockX][blockY] = Blank::Block;
 
 		if (blockY > highestBlockY)
 		{
@@ -128,7 +128,7 @@ bool Stack::IsFullLow(const int y) const
 {
 	for (int x = 0; x < WIDTH; x++)
 	{
-		if (data[x][y] == Blank::EMPTY)
+		if (data[x][y] == Blank::Empty)
 		{
 			return false;
 		}
