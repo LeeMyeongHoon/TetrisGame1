@@ -41,7 +41,7 @@ private:
 
 	static Form MakeRandomForm();
 	static Type MakeRandomType();
-	
+
 public:
 	Shape();
 	Shape(const Type type, const Form form, const int locX, const int locY);
@@ -71,8 +71,8 @@ public:
 	int GetLocY() const { return locY; }
 	int GetLocX() const { return locX; }
 
-		int GetBlockX(const int blockNum) const { return locX + BLOCK_OFFSET[(int)type][form][blockNum].x; }
-		int GetBlockY(const int blockNum) const { return locY + BLOCK_OFFSET[(int)type][form][blockNum].y; }
+	int GetBlockX(const int blockNum) const { return locX + BLOCK_OFFSET[(int)type][form][blockNum].x; }
+	int GetBlockY(const int blockNum) const { return locY + BLOCK_OFFSET[(int)type][form][blockNum].y; }
 	Location2D GetBlockXY(const int blockNum) const;
 
 	int GetLowestBlockY() const;

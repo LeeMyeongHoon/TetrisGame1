@@ -143,27 +143,36 @@ void TetrisApp::HandleInputKey()
 			switch (GetInputKey())
 			{
 			case Key::Up:
+			{
 				HandleTransformShape();
 				break;
+			}
 
 			case Key::Down:
+			{
 				HandleDownKey();
 				break;
+			}
 
 			case Key::Left:
+			{
 				HandleSideKey(Side::Left);
 				break;
-
+			}
 			case Key::Right:
+			{
 				HandleSideKey(Side::Right);
 				break;
-
+			}
 			case Key::Space:
+			{
 				HandleSpaceKey();
 				break;
-
+			}
 			default:
+			{
 				break;
+			}
 			}
 
 			mtx->unlock();
@@ -190,14 +199,7 @@ void TetrisApp::HandleDownKey()
 
 void TetrisApp::HandleSpaceKey()
 {
-	while (CanMoveDownShape())
-	{
-		std::this_thread::sleep_for(std::chrono::milliseconds(6));
-		shape->Erase();
-		shape->MoveDown();
-		shape->Draw();
-	}
-
+	shape->Erase();
 	HandlePushShape();
 }
 
@@ -221,12 +223,12 @@ void TetrisApp::HandleSideKey(Side side)
 // 알고리즘,순서 중요
 void TetrisApp::HandlePushShape()
 {
-	stack->PushShape(*shape);
-	shape->DrawChangedStack();
+	stack->PushShape(*expectedShape);
+	expectedShape->DrawChangedStack();
 
 	//  shape의 블럭부분에서만 breakRow가 발생되므로
-	int maxShapeBlockY = shape->GetLocY() + Shape::MAX_BLOCK_UP_OFFSET;
-	int minShapeBlockY = shape->GetLocY() - Shape::MAX_BLOCK_DOWN_OFFSET;
+	int maxShapeBlockY = expectedShape->GetLocY() + Shape::MAX_BLOCK_UP_OFFSET;
+	int minShapeBlockY = expectedShape->GetLocY() - Shape::MAX_BLOCK_DOWN_OFFSET;
 	if (minShapeBlockY < 0)
 	{
 		minShapeBlockY = 0;
@@ -270,11 +272,10 @@ void TetrisApp::HandlePushShape()
 	DrawNextShape();
 
 	shape->Reset();
-	SetExpectedShape();
-
 	shape->Draw();
-	DrawExpectedShape();
 
+	SetExpectedShape();
+	DrawExpectedShape();
 }
 
 

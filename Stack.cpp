@@ -110,6 +110,8 @@ void Stack::PushShape(const Shape& shape)
 			highestBlockY = blockY;
 		}
 	}
+
+	int a = 10;
 }
 
 Blank Stack::GetData(const int x, const int y) const

@@ -32,20 +32,21 @@ void TetrisApp::TransformHandler::Do()
 		return;
 	}
 
-	bool shouldMove = false;
+	// 첫번쨰 체크
+	bool canTransform = true;
 	for (int blockNum = 0; blockNum < Shape::BLOCK_COUNT; blockNum++)
 	{
 		int blockX = app.shape->GetBlockX(blockNum);
 		if (blockX < 0)
 		{
-			shouldMove = true;
+			canTransform = false;
 			obstacleX = blockX;
 			moveDirection = Side::Right;
 			break;
 		}
 		else if (blockX >= Stack::WIDTH)
 		{
-			shouldMove = true;
+			canTransform = false;
 			obstacleX = blockX;
 			moveDirection = Side::Left;
 			break;
@@ -55,7 +56,7 @@ void TetrisApp::TransformHandler::Do()
 			int blockY = app.shape->GetBlockY(blockNum);
 			if (app.stack->GetData(blockX, blockY) == Blank::Block)
 			{
-				shouldMove = true;
+				canTransform = false;
 				obstacleX = blockX;
 				moveDirection = obstacleX < app.shape->GetLocX() ? Side::Right : Side::Left;
 				break;
@@ -63,24 +64,24 @@ void TetrisApp::TransformHandler::Do()
 		}
 	}
 
-	if (shouldMove)
+	if (!canTransform)
 	{
 		Side obstacleSide = (Side)((-1) * moveDirection);
 		app.shape->MoveSide(moveDirection);
 		while (IsShapeAttachedToObstacle(obstacleSide))
 		{
-			bool canDrawShape = true;
+			canTransform = true;
 			for (int blockNum = 0; blockNum < Shape::BLOCK_COUNT; blockNum++)
 			{
 				auto blockX = app.shape->GetBlockX(blockNum);
 				auto blockY = app.shape->GetBlockY(blockNum);
 				if (blockX < 0 || blockX >= Stack::WIDTH || app.stack->GetData(blockX, blockY) == Blank::Block)
 				{
-					canDrawShape = false;
+					canTransform = false;
 					break;
 				}
 			}
-			if (canDrawShape)
+			if (canTransform)
 			{
 				DrawTranformedShape();
 				return;
@@ -97,7 +98,7 @@ void TetrisApp::TransformHandler::Do()
 		oldShape = nullptr;
 	}
 
-	else // if ( !shouldMove ) 
+	else // if ( canTransform ) 
 	{
 		DrawTranformedShape();
 	}
